@@ -8,10 +8,10 @@ namespace VirtualContestGenerator.Models.Json
     public class DifficultyInfo
     {
         [JsonPropertyName("difficulty")]
-        public double InnerDifficulty { get; set; }
+        public double? InnerDifficulty { get; set; }
         [JsonPropertyName("is_experimental")]
         public bool IsExperimental { get; set; }
 
-        public override string ToString() => Math.Round(InnerDifficulty).ToString();
+        public override string ToString() => InnerDifficulty != null ? Math.Round(InnerDifficulty.Value).ToString() : "unavailable";
     }
 }

@@ -32,9 +32,10 @@ namespace VirtualContestGenerator
             .ConfigureServices((hostContext, services) =>
             {
                 services.AddDbContext<AtCoderProblemsContext>(options => 
-                    options.UseSqlServer(hostContext.Configuration.GetConnectionString("AtCoderProblemsContext")));
-                services.AddTransient<VirtualContestService>();
-                services.AddTransient<FetchingJsonService>();
+                    options.UseSqlServer(hostContext.Configuration.GetConnectionString("AtCoderProblemsContext")), ServiceLifetime.Singleton);
+                services.AddSingleton<VirtualContestService>();
+                services.AddSingleton<FetchingJsonService>();
+                services.AddHostedService<MainWorkerService>();
             });
     }
 }

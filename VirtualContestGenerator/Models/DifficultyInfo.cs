@@ -30,18 +30,22 @@ namespace VirtualContestGenerator.Models
             IsExperimental = difficultyInfo.IsExperimental;
         }
 
-        private int GetDifficultyFrom(double innerDifficulty)
+        private int? GetDifficultyFrom(double? innerDifficulty)
         {
-            if (innerDifficulty >= 400)
+            if (innerDifficulty == null)
+            {
+                return null;
+            }
+            else if(innerDifficulty >= 400)
             {
                 return (int)(innerDifficulty + 0.5);
             }
             else
             {
-                return (int)(400.0 / Math.Pow(Math.E, (400.0 - innerDifficulty) / 400.0) + 0.5);
+                return (int)(400.0 / Math.Pow(Math.E, (400.0 - innerDifficulty.Value) / 400.0) + 0.5);
             }
         }
 
-        public override string ToString() => Id;
+        public override string ToString() => $"{Id} | diff: {Difficulty}";
     }
 }
