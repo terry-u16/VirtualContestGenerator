@@ -8,9 +8,9 @@ namespace VirtualContestGenerator.Models
 {
     public class Contest
     {
-        public string ID { get; private set; }
+        public string Id { get; private set; }
         public string Title { get; private set; }
-        public DateTimeOffset StartTime { get; }
+        public DateTimeOffset StartTime { get; private set; }
         public int? MinRated { get; private set; }
         public int? MaxRated { get; private set; }
 
@@ -18,7 +18,7 @@ namespace VirtualContestGenerator.Models
 
         public Contest(string id, string title, DateTimeOffset startTime, int? minRated, int? maxRated)
         {
-            ID = id;
+            Id = id;
             Title = title;
             StartTime = startTime;
             MinRated = minRated;
@@ -27,12 +27,12 @@ namespace VirtualContestGenerator.Models
 
         public Contest(Json.OfficialContest contest)
         {
-            if (contest.ID == null || contest.Title == null || contest.RateChange == null)
+            if (contest.Id == null || contest.Title == null || contest.RateChange == null)
             {
                 throw new ArgumentException();
             }
 
-            ID = contest.ID;
+            Id = contest.Id;
             Title = contest.Title;
             StartTime = DateTimeOffset.FromUnixTimeSeconds(contest.StartEpochSecond);
             (MinRated, MaxRated) = GetRated(contest.RateChange);

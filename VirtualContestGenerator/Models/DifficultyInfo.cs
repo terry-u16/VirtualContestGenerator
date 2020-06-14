@@ -7,25 +7,25 @@ namespace VirtualContestGenerator.Models
 {
     public class DifficultyInfo
     {
-        public string ID { get; set; }
+        public string Id { get; set; }
         public double? Difficulty { get; set; }
         public bool IsExperimental { get; set; }
 
-        public string QuestionID { get; set; }
-        public Problem? Question { get; set; }
+        public string ProblemId { get; set; } = default!;
+        public Problem Problem { get; set; } = default!;
 
         public DifficultyInfo(string id, double? difficulty, bool isExperimental)
         {
-            ID = id;
-            QuestionID = id;
+            Id = id;
+            ProblemId = id;
             Difficulty = difficulty;
             IsExperimental = isExperimental;
         }
 
         public DifficultyInfo(string id, Json.DifficultyInfo difficultyInfo)
         {
-            ID = id;
-            QuestionID = id;
+            Id = id;
+            ProblemId = id;
             Difficulty = GetDifficultyFrom(difficultyInfo.InnerDifficulty);
             IsExperimental = difficultyInfo.IsExperimental;
         }

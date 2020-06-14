@@ -8,7 +8,7 @@ namespace VirtualContestGenerator.Models.Json
     public class OfficialContest
     {
         [JsonPropertyName("id")]
-        public string? ID { get; set; }
+        public string? Id { get; set; }
         [JsonPropertyName("start_epoch_second")]
         public long StartEpochSecond { get; set; }
         [JsonPropertyName("duration_second")]

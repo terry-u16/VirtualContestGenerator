@@ -8,36 +8,33 @@ namespace VirtualContestGenerator.Models
 {
     public class Problem
     {
-        public string ID { get; private set; }
+        public string Id { get; private set; }
         public string Title { get; private set; }
         public bool HasSelected { get; set; }
 
-        public string ContestID { get; private set; }
+        public string ContestId { get; private set; }
         public Contest Contest { get; set; } = null!;
 
-        public string DifficultyInfoID { get; set; }
         public DifficultyInfo? DifficultyInfo { get; set; }
 
-        public Problem(string id, string title, string contestID, bool hasSelected)
+        public Problem(string id, string title, string contestId, bool hasSelected)
         {
-            ID = id;
+            Id = id;
             Title = title;
-            ContestID = contestID;
-            DifficultyInfoID = id;
+            ContestId = contestId;
             HasSelected = hasSelected;
         }
 
         public Problem(Json.OfficialProblem problem)
         {
-            if (problem.ID == null || problem.ContestID == null || problem.Title == null)
+            if (problem.Id == null || problem.ContestID == null || problem.Title == null)
             {
                 throw new ArgumentException();
             }
 
-            ID = problem.ID;
+            Id = problem.Id;
             Title = problem.Title;
-            ContestID = ContestID;
-            DifficultyInfoID = ID;
+            ContestId = ContestId;
             HasSelected = false;
         }
 

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "VirtualContestGenerator": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

@@ -9,13 +9,13 @@ namespace VirtualContestGenerator.Models.Json
     public class ProblemSet
     {
         [JsonPropertyName("contest_id")]
-        public string ContestID { get; }
+        public string ContestId { get; }
         [JsonPropertyName("problems")]
         public Problem[] Problems { get; }
 
         public ProblemSet(string contestID, params Problem[] problems)
         {
-            ContestID = contestID;
+            ContestId = contestID;
             Problems = problems;
         }
 
@@ -28,7 +28,7 @@ namespace VirtualContestGenerator.Models.Json
     public class Problem
     {
         [JsonPropertyName("id")]
-        public string ID { get; }
+        public string Id { get; }
         [JsonPropertyName("point")]
         public int? Point { get; }
         [JsonPropertyName("order")]
@@ -36,11 +36,11 @@ namespace VirtualContestGenerator.Models.Json
 
         public Problem(string id, int? point, int order)
         {
-            ID = id;
+            Id = id;
             Point = point;
             Order = order;
         }
 
-        public override string ToString() => ID;
+        public override string ToString() => Id;
     }
 }

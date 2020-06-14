@@ -8,12 +8,12 @@ namespace VirtualContestGenerator.Models.Json
     public class OfficialProblem
     {
         [JsonPropertyName("id")]
-        public string? ID { get; set; }
+        public string? Id { get; set; }
         [JsonPropertyName("contest_id")]
         public string? ContestID { get; set; }
         [JsonPropertyName("title")]
         public string? Title { get; set; }
 
-        public override string ToString() => ID ?? string.Empty;
+        public override string ToString() => Id ?? string.Empty;
     }
 }
