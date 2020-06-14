@@ -47,8 +47,8 @@ namespace VirtualContestGenerator.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<double?>("Difficulty")
-                        .HasColumnType("float");
+                    b.Property<int?>("Difficulty")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsExperimental")
                         .HasColumnType("bit");

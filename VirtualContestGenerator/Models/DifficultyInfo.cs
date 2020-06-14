@@ -8,13 +8,13 @@ namespace VirtualContestGenerator.Models
     public class DifficultyInfo
     {
         public string Id { get; set; }
-        public double? Difficulty { get; set; }
+        public int? Difficulty { get; set; }
         public bool IsExperimental { get; set; }
 
         public string ProblemId { get; set; } = default!;
         public Problem Problem { get; set; } = default!;
 
-        public DifficultyInfo(string id, double? difficulty, bool isExperimental)
+        public DifficultyInfo(string id, int? difficulty, bool isExperimental)
         {
             Id = id;
             ProblemId = id;
@@ -30,15 +30,15 @@ namespace VirtualContestGenerator.Models
             IsExperimental = difficultyInfo.IsExperimental;
         }
 
-        private double GetDifficultyFrom(double innerDifficulty)
+        private int GetDifficultyFrom(double innerDifficulty)
         {
             if (innerDifficulty >= 400)
             {
-                return innerDifficulty;
+                return (int)(innerDifficulty + 0.5);
             }
             else
             {
-                return 400.0 / Math.Pow(Math.E, (400.0 - innerDifficulty) / 400.0);
+                return (int)(400.0 / Math.Pow(Math.E, (400.0 - innerDifficulty) / 400.0) + 0.5);
             }
         }
     }

@@ -47,7 +47,7 @@ namespace VirtualContestGenerator.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    Difficulty = table.Column<double>(nullable: true),
+                    Difficulty = table.Column<int>(nullable: true),
                     IsExperimental = table.Column<bool>(nullable: false),
                     ProblemId = table.Column<string>(nullable: false)
                 },

@@ -10,7 +10,7 @@ using VirtualContestGenerator.Data;
 namespace VirtualContestGenerator.Migrations
 {
     [DbContext(typeof(AtCoderProblemsContext))]
-    [Migration("20200614060335_InitialCreate")]
+    [Migration("20200614061302_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,8 +49,8 @@ namespace VirtualContestGenerator.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<double?>("Difficulty")
-                        .HasColumnType("float");
+                    b.Property<int?>("Difficulty")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsExperimental")
                         .HasColumnType("bit");
