@@ -10,6 +10,7 @@ namespace VirtualContestGenerator.Models
     {
         public string ID { get; private set; }
         public string Title { get; private set; }
+        public bool HasSelected { get; set; }
 
         public string ContestID { get; private set; }
         public Contest Contest { get; set; } = null!;
@@ -17,12 +18,13 @@ namespace VirtualContestGenerator.Models
         public string DifficultyInfoID { get; set; }
         public DifficultyInfo? DifficultyInfo { get; set; }
 
-        public Problem(string id, string title, string contestID)
+        public Problem(string id, string title, string contestID, bool hasSelected)
         {
             ID = id;
             Title = title;
             ContestID = contestID;
             DifficultyInfoID = id;
+            HasSelected = hasSelected;
         }
 
         public Problem(Json.OfficialProblem problem)
@@ -36,6 +38,7 @@ namespace VirtualContestGenerator.Models
             Title = problem.Title;
             ContestID = ContestID;
             DifficultyInfoID = ID;
+            HasSelected = false;
         }
 
         public override string ToString() => Title;
