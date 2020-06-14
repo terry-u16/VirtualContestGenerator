@@ -37,6 +37,8 @@ namespace VirtualContestGenerator.Services
         {
             try
             {
+                await _context.Database.MigrateAsync();
+
                 _logger.LogInformation("[Starting...]");
                 await UpdateDatabaseAsync();
                 var problemSet = await GetProblemSetAsync();
