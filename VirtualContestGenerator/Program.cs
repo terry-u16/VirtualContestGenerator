@@ -24,10 +24,13 @@ namespace VirtualContestGenerator
             Host.CreateDefaultBuilder(args)
             .ConfigureAppConfiguration((context, config) =>
             {
-                //var keyVaultEndPoint = "https://<YourKeyVaultName>.vault.azure.net";
-                //var tokenProvider = new AzureServiceTokenProvider();
-                //var client = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(tokenProvider.KeyVaultTokenCallback));
-                //config.AddAzureKeyVault(keyVaultEndPoint, client, new DefaultKeyVaultSecretManager());
+                if (context.HostingEnvironment.EnvironmentName == "Production")
+                {
+                    var keyVaultEndPoint = "https://VirtualContestKeyVault.vault.azure.net";
+                    var tokenProvider = new AzureServiceTokenProvider();
+                    var client = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(tokenProvider.KeyVaultTokenCallback));
+                    config.AddAzureKeyVault(keyVaultEndPoint, client, new DefaultKeyVaultSecretManager());
+                }
             })
             .ConfigureServices((hostContext, services) =>
             {

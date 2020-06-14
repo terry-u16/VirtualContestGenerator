@@ -13,10 +13,10 @@ namespace VirtualContestGenerator.Models.Json
         [JsonPropertyName("problems")]
         public Problem[] Problems { get; }
 
-        public ProblemSet(string contestID, params Problem[] problems)
+        public ProblemSet(string contestID, IEnumerable<Problem> problems)
         {
             ContestId = contestID;
-            Problems = problems;
+            Problems = problems.ToArray();
         }
 
         public ProblemSet(string contestID, params (string id, int? point)[] problems) 

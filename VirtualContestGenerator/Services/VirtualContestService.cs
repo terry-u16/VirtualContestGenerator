@@ -53,7 +53,7 @@ namespace VirtualContestGenerator.Services
 
         private async Task<HttpResponseMessage> PostLoginAsync(Stream loginFormContent, string githubID, string githubPassword)
         {
-            const string loginUri = "https://github.com/sessio";
+            const string loginUri = "https://github.com/session";
             const string redirectUri = "/login/oauth/authorize?client_id=162a5276634fc8b970f7";
             var parser = new HtmlParser();
             var html = await parser.ParseDocumentAsync(loginFormContent);
