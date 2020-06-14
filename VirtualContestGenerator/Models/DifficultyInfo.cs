@@ -41,5 +41,7 @@ namespace VirtualContestGenerator.Models
                 return (int)(400.0 / Math.Pow(Math.E, (400.0 - innerDifficulty) / 400.0) + 0.5);
             }
         }
+
+        public override string ToString() => Id;
     }
 }

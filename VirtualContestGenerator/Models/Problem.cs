@@ -33,7 +33,7 @@ namespace VirtualContestGenerator.Models
             }
 
             Id = problem.Id;
-            Title = problem.Title;
+            Title = problem.Title.Trim();
             ContestId = ContestId;
             HasSelected = false;
         }

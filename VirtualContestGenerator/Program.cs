@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 using Microsoft.Azure.KeyVault;
 using Microsoft.Azure.Services.AppAuthentication;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,7 @@ using Microsoft.Extensions.Configuration.AzureKeyVault;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using VirtualContestGenerator.Data;
+using VirtualContestGenerator.Services;
 
 namespace VirtualContestGenerator
 {
@@ -31,6 +33,8 @@ namespace VirtualContestGenerator
             {
                 services.AddDbContext<AtCoderProblemsContext>(options => 
                     options.UseSqlServer(hostContext.Configuration.GetConnectionString("AtCoderProblemsContext")));
+                services.AddTransient<VirtualContestService>();
+                services.AddTransient<FetchingJsonService>();
             });
     }
 }

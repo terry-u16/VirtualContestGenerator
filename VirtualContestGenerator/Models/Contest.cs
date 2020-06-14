@@ -33,7 +33,7 @@ namespace VirtualContestGenerator.Models
             }
 
             Id = contest.Id;
-            Title = contest.Title;
+            Title = contest.Title.Trim();
             StartTime = DateTimeOffset.FromUnixTimeSeconds(contest.StartEpochSecond);
             (MinRated, MaxRated) = GetRated(contest.RateChange);
         }
@@ -59,5 +59,7 @@ namespace VirtualContestGenerator.Models
                 return (null, null);
             }
         }
+
+        public override string ToString() => Title;
     }
 }
