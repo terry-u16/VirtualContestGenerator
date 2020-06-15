@@ -163,7 +163,7 @@ namespace VirtualContestGenerator.Services
             _logger.LogInformation("[Registering virtual contests...]");
             await _virtualContestService.LoginAsync(_settings.GitHubUserInfomation.Id, _settings.GitHubUserInfomation.Password);
 
-            var startTime = DateTimeOffset.Now.Date + new TimeSpan(_settings.VirtualContestTime.BeginHour, 0, 0) - TimeSpan.FromDays(7);
+            var startTime = DateTimeOffset.Now.Date + new TimeSpan(_settings.VirtualContestTime.BeginHour, 0, 0);
             var duration = new TimeSpan(0, _settings.VirtualContestTime.DurationMinutes, 0);
             var no = (int)(DateTimeOffset.Now - _settings.VirtualContestTime.Since).TotalDays + 1;
 

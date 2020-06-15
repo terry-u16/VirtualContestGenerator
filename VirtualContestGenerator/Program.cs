@@ -22,16 +22,6 @@ namespace VirtualContestGenerator
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((context, config) =>
-            {
-                if (context.HostingEnvironment.EnvironmentName == "Production")
-                {
-                    var keyVaultEndPoint = "https://VirtualContestKeyVault.vault.azure.net";
-                    var tokenProvider = new AzureServiceTokenProvider();
-                    var client = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(tokenProvider.KeyVaultTokenCallback));
-                    config.AddAzureKeyVault(keyVaultEndPoint, client, new DefaultKeyVaultSecretManager());
-                }
-            })
             .ConfigureServices((hostContext, services) =>
             {
                 services.AddDbContext<AtCoderProblemsContext>(options => 
@@ -39,6 +29,10 @@ namespace VirtualContestGenerator
                 services.AddSingleton<VirtualContestService>();
                 services.AddSingleton<FetchingJsonService>();
                 services.AddHostedService<MainWorkerService>();
+            })
+            .ConfigureAppConfiguration((hostContext, builder) =>
+            {
+                builder.AddUserSecrets<Program>();
             });
     }
 }
