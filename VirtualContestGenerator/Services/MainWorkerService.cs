@@ -149,7 +149,7 @@ namespace VirtualContestGenerator.Services
                     notSelectedCandidates = await candidates.ToListAsync();
                 }
                 selected = notSelectedCandidates[random.Next(notSelectedCandidates.Count)];
-                selected.HasSelected = true;
+                //selected.HasSelected = true;
                 problemSet[i] = selected;
             }
 
@@ -179,7 +179,7 @@ namespace VirtualContestGenerator.Services
         {
             var contestTitle = string.Format(title, no);
             _logger.LogInformation($"[Registering {contestTitle}...]");
-            var contest = new Models.Json.VirtualContest(contestTitle, startTime, duration, description, false); ;
+            var contest = new Models.Json.VirtualContest(contestTitle, startTime, duration, description, false, 300);
             var guid = await _virtualContestService.CreateVirtualContestAsync(contest);
 
             _logger.LogInformation($"[Registering {string.Join(", ", problems)}...]");
